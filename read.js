@@ -1,3 +1,3 @@
 notes
 pictures
-q images
+qimages
