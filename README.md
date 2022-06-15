@@ -11,12 +11,8 @@ HTML Pages : 1. Index Page.html
              5.Contact.html 
              6.Styles.css and Styles1.css
 
-
-
 Screen Shots :
-
-
-                                        Main--Index.html !
+                                 Main--Index.html !
 [Main page](https://user-images.githubusercontent.com/105827291/173720444-38a822f5-8e70-4c1c-9b95-fcbba61b0190.png)
 
 
