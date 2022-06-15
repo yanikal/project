@@ -1,7 +1,4 @@
-h3{
-    text-align: center;
-    background-color: grey;
-   }  
+
    h2{
     text-align: center;
     background-color:orange;
@@ -15,13 +12,11 @@ h3{
     color: black;
    }
    label{
-    width: 650px;
+    width: 500px;
     display: inline-block;
     text-align:right;
     padding: 20px 20px;
+    font-family: Arial, Helvetica, sans-serif;
     }
-    textarea{
-        padding:20px;
-        font-size: 15px;
-    }
+   
     
