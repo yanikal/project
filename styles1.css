@@ -1,3 +1,27 @@
-table,th,td {
-    border:1px solid;
+h3{
+    text-align: center;
+    background-color: grey;
+   }  
+   h2{
+    text-align: center;
+    background-color:orange;
    }
+ 
+   span{
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+    background-color: white;
+    color: black;
+   }
+   label{
+    width: 650px;
+    display: inline-block;
+    text-align:right;
+    padding: 20px 20px;
+    }
+    textarea{
+        padding:20px;
+        font-size: 15px;
+    }
+    
