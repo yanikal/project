@@ -26,24 +26,46 @@
    background-color:rgb(255, 255, 255);
    list-style:none;
    }*/
-   nav
+ 
+   .nav
    {
        width: 100%;
        height: 50px;
        background-color:white;
+       
    }
-   nav ul
+   .nav ul
    {
     float:left;
    }
-   nav ul li
+   .nav ul li
    {
     float:left;
     list-style: none;
     position: relative;
 
    }
-   nav ul li a{
+     @media screen and (min-width:800px)
+   {
+    .nav ul
+     {
+      
+      display:flex;
+      flex-direction: row;
+
+     }
+
+     .nav ul li
+      {
+   
+       list-style-type: none;
+      padding-right: 10px;
+
+      }
+    }
+    
+
+   .nav ul li a{
     font-family:fantasy ;
     color:rgb(255, 136, 0);
     font-size: 15px;
@@ -51,41 +73,41 @@
     padding: 25px 35px;
     text-decoration: none;
    }
-   nav ul li ul{
+
+   .nav ul li ul{
     
     display:none;
     position: absolute;
     background-color: white;
     padding: 15px;
-    border-radius: 4px 4px 8px 8px;
+    border-radius:4px 4px 8px 8px;
     
    }
 
-   nav ul li:hover ul{
+   .nav ul li:hover ul{
     
     display:block;
     
     
    }
-   nav ul li ul li{
+   .nav ul li ul li{
     width: 80px;
     border-radius: 4px;
    } 
-   nav ul li ul li a{
+   .nav ul li ul li a{
     padding: 8px 4px ;
    }
-   nav ul li ul li a:hover{
+   .nav ul li ul li a:hover{
     background-color:orangered;
    }
 
 
-  footer {
+  #footer {
     
         position:absolute;
         bottom:0;
         width:100%;
         height:30px;   
-        
         color:whitesmoke;
         font-family:Verdana, Geneva, Tahoma, sans-serif;
         text-align: center;
