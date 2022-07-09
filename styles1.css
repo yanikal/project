@@ -3,7 +3,8 @@
     text-align: center;
     background-color:orange;
    }
- 
+   
+  
    span{
     font-size: 20px;
     position: relative;
@@ -52,16 +53,27 @@
    margin: 2rem auto;
     padding:1rem  2.25rem ;
     font-size: 1rem;
+    
     background-color: white;
     border: black;
     border-radius: 4px;
+    box-shadow: 2px 2px 3px gray;
+   }
+
+   button:hover{
+    cursor: pointer;
+   }
+   button:active{
+    transform: scale(0.5);
    }
    .btn-add
    {
      border:1px solid green;
      background-color: rgba(0, 255, 0, 0.048);
      color:green;
+
    }
+
    .btn-remove
    {
      border:1px solid red;

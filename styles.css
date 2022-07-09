@@ -16,12 +16,21 @@ li
    } 
   .name{
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: darkorange;
-    font-size: large;
-    
-    margin-right: 20px 40px;
+    color: rgb(55, 127, 221);
+    font-size: x-large;
+    font-weight: 500;
+
+    margin-left:5rem;
    }
-   
+   .name1{
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: rgb(55, 127, 221);
+    font-size: x-large;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    background-color: azure;
+   }
    body
    {
    background:url("./images/chkn.jpg");
@@ -67,6 +76,7 @@ li
     float:left;
     list-style: none;
    position: relative;
+   
     
 
    }
@@ -83,7 +93,7 @@ li
   
     font-size: 1rem;
     color:white;
-    background-color: rgb(233, 82, 12);
+    background-color: rgb(241, 125, 28);
     border-color:white;
     border-radius: 10px;
     width: 5rem;
@@ -92,7 +102,7 @@ li
    .button-cart{ 
     background-color:white;
     /*border-color:rgb(228, 125, 28);*/
-    border-color: orangered;
+    border-color: rgb(241, 173, 46);
     border-radius: 10px;
     width: 5rem;
     float: left;
@@ -104,14 +114,27 @@ li
   
    
    }
-     @media screen and (min-width:800px)
+  
+  
+  
+   @media screen and (min-width: 400px)
    {
-    .nav ul,.nav-right ul
+    .nav ul:active
      {
       
-      display:flex;
-      flex-direction: row;
+      display:inline;
+     
+      width: 15%;
       
+      
+
+     }
+     .nav-right ul
+     {
+      
+     display:flex;
+     
+     
 
      }
 
@@ -122,8 +145,13 @@ li
        margin-top: 1.5rem;
 
       }
-     
-    }
+      .name{
+        display:flex;
+        justify-content: center;
+        width: 20%;
+       }
+      
+   }
     
 
    .nav ul li a, .nav-right ul li a{
@@ -141,7 +169,8 @@ li
     position: absolute;
     background-color:white;
     padding: 20px;
-    border-radius:4px 4px 8px 8px;
+    border-radius:2px 2px 4px 2px;
+    
     
    }
    
@@ -159,16 +188,18 @@ li
     
    }
    .nav ul li ul li{
-    width: 60px;
+    width: 50px;
     border-radius: 4px;
+    text-decoration: underline;
     
    } 
    .nav ul li ul li a{
-    padding: 8px 4px ;
+    padding: 5px 3px ;
    
    }
    .nav ul li ul li a:hover{
    color:darkorange;
+   cursor: pointer;
    
    }
 
