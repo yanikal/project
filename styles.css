@@ -4,7 +4,7 @@
 
 
 }
-li
+li.nav-item
    {
        text-align:center;
        color:orange;
@@ -38,7 +38,10 @@ li
    background-repeat: repeat;
    background-size:cover;
    }
-   
+   .responsive {
+    width: 100%;
+    height: auto;
+  }
    
   /* #header
    {
