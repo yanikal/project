@@ -1,6 +1,6 @@
 Online food order -->chic-chic-chicken website
 
-Description : chic-chic-chicken is a full stack web application that allows users to place orders at a single restaurant. Both the restaurant and the user are notified by the email. The orders were stored using MongoDb.Restaurant Web Pages By using HTML,CSS,java script,node js and mongo DB.
+Description : chic-chic-chicken website is online food oder site and customers can check the menu by any device,it's responsive and user friendly. When the user first time visiting the website they have to create an account to place an order. After login, they will navigate to our super delicious menu and user choose the items and proceed to checkout page to finish the payment.chic-chic-chicken is a full stack web application that allows users to place orders at a single restaurant.The orders were stored using MongoDb.
 
 Tech stock:
 Front-end: JavaScript, CSS, HTML5, Bootstrap
