@@ -1,8 +1,8 @@
-Title : HTML Assignment
+Online food order -->chic-chic-chicken website
 
-Description : Restaurant Web Pages By using HTML and CSS
+Description : chic-chic-chicken is a full stack web application that allows users to place orders at a single restaurant. Both the restaurant and the user are notified by the email. The orders were stored using MongoDb.Restaurant Web Pages By using HTML,CSS,java script,node js and mongo DB.
 
-How to Install and Run : Download Visual Studio Code and create a file then give right click and Open With Live Server.
+How to Install and Run : Download Visual Studio Code .
 
 HTML Pages : 1. Index Page.html 
              2. Home.html 
