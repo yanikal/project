@@ -1,0 +1,7 @@
+{
+	"port": 5000,
+	"database": {
+		"name":"Chic-chic-chicken",
+		"uri": "mongodb://localhost:27017"
+	}
+}
