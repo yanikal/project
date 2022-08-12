@@ -1,9 +1,8 @@
-
-const userModel = require('../models/user.model')
+const userModel = require('../models/user.models')
 const createOne = async (req, res) => {
-    const { email, fullName,password,confirmPassword } = req.body
+    const { emailAddress, fullName, password, confirmPassword } = req.body
     console.log(req.body)
-    const fields = {email, fullName,password,confirmPassword }
+    const fields = {emailAddress, fullName, password, confirmPassword  }
     try {
       const newUser = await new userModel(fields)
       newUser.save() 

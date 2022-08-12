@@ -4,4 +4,4 @@ const createOne = require('../controller/user.controller');
 const userrouter = express.Router();
 userrouter.route("/").post(createOne);
 module.exports = userrouter;
-//router.post('/signup', userController.createOne)
+// router.post('/signup', userController.createOne)

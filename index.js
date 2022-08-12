@@ -1,33 +1,30 @@
-
-const express = require('express');
-const bcrypt=require("bcrypt");
-const mongoose = require('mongoose');
-const Registeruser = require("./models/user.model");
-const jwt = require('jsonwebtoken');
+const express= require("express")
+const bcrypt=require("bcrypt")
+const cors = require('cors')
+const MongoClient = require("mongodb").MongoClient;
+const url = "mongodb://localhost:27017"
+const port = process.env.PORT || 3000;
 const urlencodedParser = express.urlencoded({ extended: true });
-const middleware = require('./middleware');
-const cors = require('cors');
+const jwt= require("jsonwebtoken");
+
+//intializing app express
 const app = express();
 
-
-mongoose.connect("mongodb+srv://root:admin@cluster0.y8nfd.mongodb.net/usersDb?retryWrites=true&w=majority",{
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-    
-}).then(
-    () => console.log('DB Connection established')
-)
-
-app.use(express.json());
-app.use(cors());
-app.use(urlencodedParser);
-app.use(express.static("public"));
-
-//app.use(cors({origin:"*"}))
+//use middleware
+app.use(cors())
+app.use(express.json())
+app.use(urlencodedParser)
+app.use(express.static("public"))
 
 //routes
 const userrouter = require('./routes/user.routes');
 app.use('/users',userrouter)
+
+//connecting to server
+MongoClient.connect(url, function (err, client) {
+  console.log("Connected successfully to DATABASE");
+});
+  
 ////Routes for home page
 app.get('/', (req,res)=>{
   res.sendFile(__dirname +'/public/index.html');//Route handler
@@ -40,16 +37,27 @@ app.get('/signup', (req,res)=>{
  
 });
 
-//Routes for signin Page
+//Routes for Login Page
 app.get('/signin', (req,res)=>{
-  res.sendFile(__dirname +'/public/sign.html')//Route handler
+  res.sendFile(__dirname +'/public/login.html')//Route handler
  
 });
 
 
+//Routes for contact us page
+app.get('/contact', (req,res)=>{
+  res.sendFile(__dirname +'/public/contact.html');//Route handler
+ 
+});
+
 //Routes for menu page
 app.get('/menu', (req,res)=>{
   res.sendFile(__dirname +'/public/menu.html');//Route handler
+ 
+});
+//Routes for About page
+app.get('/home', (req,res)=>{
+  res.sendFile(__dirname +'/public/home.html');//Route handler
  
 });
 
@@ -58,84 +66,149 @@ app.get('/calories', (req,res)=>{
   res.sendFile(__dirname +'/public/calories.html');//Route handler
  
 });
-//Routes for About page
-app.get('/home', (req,res)=>{
-  res.sendFile(__dirname +'/public/home.html');//Route handler
+// app.get('/logout', (req, res)=>{
+//   req.logOut();
+//    res.redirect('/')
+//  })
+/** */
+
+app.post ('/signup', urlencodedParser,  async (req, res)=>{
+  //console.log(req.body);
+ try{
+   let fullname=req.body.fullname;
+  console.log(req.body)
+  let email=req.body.email;
+  let password=req.body.password;
+  let confirmpassword=req.body.confirmpassword;
+  
+  if(fullname &&email && password && confirmpassword)
+  { //res.status(200).send({status:'ok'})
+    //console.log(req.body)
+    
+    MongoClient.connect(url, { useUnifiedTopology: true }, async (err, client)=> {
+    const db=client.db("chic-chic-chicken")
+     
+    const collection =db.collection("users")
+    const doc={ fullname:fullname,email:email , password:password, confirmpassword:confirmpassword};
+    const findUser= await collection.findOne({email:req.body.email})
+    console.log(findUser)
+        if(findUser){
+         console.log("User already exists")
+          return res.status(400).send({message:'User already exists'})
+        }else{
+          const newUser=await collection.insertOne(doc) 
+              res.send (newUser)}
+      
+     })    
+   
+  }else{
+     res.status(400).send("bad request");
+    }
+
+ }catch(ex){
+    return res.status(500).send("error");
+  }
 });
- //Routes for contact page
-app.get('/contact', (req,res)=>{
-  res.sendFile(__dirname +'/public/contact.html');//Route handler
+
+
+app.post ('/signin', urlencodedParser, async (req, res)=>{
+  
+  try{
+    let email=req.body.email;
+    let password=req.body.password;
+    if(email && password ){
+        MongoClient.connect(url, { useUnifiedTopology: true },  async (err, client)=> {
+        const db=client.db("chic-chic-chicken")
+        const collection =db.collection("users")
+        const doc={email:email , password:password };
+        const loginFindUser=await collection.findOne(doc)
+        console.log(loginFindUser)
+        if(!loginFindUser){
+         return res.status(400).send({message: "Invalid username/password"})
+       }
+       else {
+        const token = jwt.sign(
+          { id: loginFindUser._id, email: loginFindUser.email },
+          "oNZpSj2XRak9EF86"
+        );
+        res
+          .header("x-auth-token", token)
+          .send({ success: true, message: "login successful" });
+          // const newLoginUser= await collection.insertOne(doc)
+          // res.send(newLoginUser)
+          // console.log(`Welcome ${email}`)
+          // return res.json({status:'ok', message:`<p>Welcome ${email}</p>`})
+        }
+        // collection.insertOne(doc, (error,result) =>{
+        //   if(!error){
+        //     client.close();
+        //     console.log(result.ops)
+        //     res.send (doc)
+        //   }else{
+        //     client.close();
+        //     res.send("is an error")
+        //   }
+          
+        // });
+      });
+
+    }else{
+      return res.status(400).send("bad request");
+
+    }
+
+
+  }catch(ex){
+    return res.status(500).send("error");
+  }
+ });
+
+
+app.post ('/contact', urlencodedParser,  async (req, res)=>{
+    try{  
+    let Name=req.body.Name;
+    console.log("Name is:",Name)
+    let Email=req.body.Email;
+    console.log("Email is:",Email)
+    let options= req.body.options;
+    console.log("select issue:",options)
+    let describeYourIssue=req.body.describeYourIssue;
+    console.log(" describe the message:",describeYourIssue)
+   if(Name && Email && options && describeYourIssue)
+    { //res.status(200).send({status:'ok'})
+      MongoClient.connect(url, { useUnifiedTopology: true }, async (err, client)=> {
+        const db=client.db("chic-chic-chicken")
+        const collection =db.collection("contactusers")
+        const doc={
+          Name:Name,
+          Email:Email,
+          options:options,
+          describeYourIssue:describeYourIssue
+        };
+
+        console.log("doc",doc)
+        collection.insertOne(doc, (error,result) =>{
+      if(!error){
+        client.close();
+        res.send (doc)
+
+      }else{
+        client.close();
+        res.send("is an error")
+      }
+      
+    });
+  });
+                
+}else{
+  return res.status(400).send("bad request");
+
+}
+}catch(ex){
+return res.status(500).send("error");
+}
+}); 
+
+app.listen(port, () => {
+  console.log(`Server is running on port:${port} `);
 });
-
-app.post('/signup',async (req, res) =>{
-    try{
-        const {fullname,email,password,confirmpassword} = req.body;
-        let exist = await Registeruser.findOne({email})
-        if(exist){
-            return res.status(400).send('User Already Exist')
-        }
-        if(password !== confirmpassword){
-            return res.status(400).send('Passwords are not matching');
-        }
-        let newUser = new Registeruser({
-            fullname,
-            email,
-            password,
-            confirmpassword
-        })
-        await newUser.save();
-        res.status(200).send('Registered Successfully')
-
-    }
-    catch(err){
-        console.log(err)
-        return res.status(500).send('Internel Server Error')
-    }
-})
-
-app.post('/signin',async (req, res) => {
-    try{
-        const {email,password} = req.body;
-        let exist = await Registeruser.findOne({email});
-        if(!exist) {
-            return res.status(400).send('User Not Found');
-        }
-        if(exist.password !== password) {
-            return res.status(400).send('Invalid credentials');
-        }
-        let payload = {
-            user:{
-                id : exist.id
-            }
-        }
-        jwt.sign(payload,'jwtSecret',{expiresIn:3600000},
-          (err,token) =>{
-              if (err) throw err;
-              return res.json({token})
-          }  
-            )
-
-    }
-    catch(err){
-        console.log(err);
-        return res.status(500).send('Server Error')
-    }
-})
-
-app.get('/myprofile',middleware,async(req, res)=>{
-    try{
-        let exist = await Registeruser.findById(req.user.id);
-        if(!exist){
-            return res.status(400).send('User not found');
-        }
-        res.json(exist);
-    }
-    catch(err){
-        console.log(err);
-        return res.status(500).send('Server Error')
-    }
-})
-
-app.listen(5000,()=>{
-    console.log('Server running...')
-})
