@@ -45,8 +45,8 @@ window.onload = function async (req,res) {
             localStorage.setItem("x-auth-token", token);
            window.location.href="/menu"
            
-          
-          
+           
+        
           }else{
            errorMessage.innerHTML="invalid username/password."
            errorMessage.style.color="red";

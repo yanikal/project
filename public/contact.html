@@ -13,28 +13,22 @@
    <a href="index.html">
     <img src="./images/house.png"  alt="not found" width=100 height=60 class="responsive" ></a>
     <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+    <p id="error"></p>
+    <p id="success"></p>
      <form id="form" method="POST" action="/contact" style="max-width:400px; margin:auto;">
         <div class="form-floating">
-            <input type="Name" class="form-control" id="floatingInput" placeholder="Name">
+            <input type="Name" class="form-control" id="Name" placeholder="Name">
             <label for="Name">Name</label>
           </div><br>
           <div class="form-floating">
-            <input type="Email" class="form-control" id="floatingInput" placeholder="Email">
+            <input type="Email" class="form-control" id="Email" placeholder="Email">
             <label for="Email">Email</label>
           </div>
-          <label for ="options" type="options">Reason to contact us? *</label>
-          <div class="form-floating">
-               <select class="form-select" aria-label="Default select example">
-                <option>Select your issue</option>
-                <option>Mobile order</option>
-                <option>In restaurant</option>
-                <option>Log-in</option>
-                <option>Account</option>
-                </select>
+         
             </div><br>
             
             <label for="DescribeYourIssue" class="form-label">Describe your issue*</label>
-            <textarea name="text" class="form-control" id="issue"  rows="3"></textarea>
+            <textarea name="text" class="form-control" id="describeYourIssue"  rows="3"></textarea>
           </div><br>
           <div class="checkbox mb-3">
          <input type="checkbox" value="policy">
@@ -43,7 +37,7 @@
           
           <br>
            
-            <button class="w-100 btn btn-lg btn-secondary" type="submit">Submit</button>
+            <button class="w-100 btn btn-lg btn-secondary" type="submit">submit</button>
            
            </div><br>
             <i class="fas fa-envelope mt-4 fa-2x"></i>

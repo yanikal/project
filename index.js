@@ -39,7 +39,7 @@ app.get('/signup', (req,res)=>{
 
 //Routes for Login Page
 app.get('/signin', (req,res)=>{
-  res.sendFile(__dirname +'/public/login.html')//Route handler
+  res.sendFile(__dirname +'/public/signin.html')//Route handler
  
 });
 
@@ -75,13 +75,14 @@ app.get('/calories', (req,res)=>{
 app.post ('/signup', urlencodedParser,  async (req, res)=>{
   //console.log(req.body);
  try{
-   let fullname=req.body.fullname;
-  console.log(req.body)
+  
   let email=req.body.email;
+  let fullname=req.body.fullname;
+  console.log(req.body)
   let password=req.body.password;
   let confirmpassword=req.body.confirmpassword;
   
-  if(fullname &&email && password && confirmpassword)
+  if(email &&fullname && password && confirmpassword)
   { //res.status(200).send({status:'ok'})
     //console.log(req.body)
     
@@ -167,14 +168,13 @@ app.post ('/signin', urlencodedParser, async (req, res)=>{
 app.post ('/contact', urlencodedParser,  async (req, res)=>{
     try{  
     let Name=req.body.Name;
-    console.log("Name is:",Name)
+    console.log("Name:",Name)
     let Email=req.body.Email;
-    console.log("Email is:",Email)
-    let options= req.body.options;
-    console.log("select issue:",options)
+    console.log("Email:",Email)
+    
     let describeYourIssue=req.body.describeYourIssue;
-    console.log(" describe the message:",describeYourIssue)
-   if(Name && Email && options && describeYourIssue)
+    console.log("describe the message:",describeYourIssue)
+   if(Name && Email && describeYourIssue)
     { //res.status(200).send({status:'ok'})
       MongoClient.connect(url, { useUnifiedTopology: true }, async (err, client)=> {
         const db=client.db("chic-chic-chicken")
@@ -182,7 +182,7 @@ app.post ('/contact', urlencodedParser,  async (req, res)=>{
         const doc={
           Name:Name,
           Email:Email,
-          options:options,
+          
           describeYourIssue:describeYourIssue
         };
 
