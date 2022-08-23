@@ -60,6 +60,8 @@ window.onload = function async (req,res) {
     const id= await response.json();
     console.log(id);
     if(response.status==200){
+      
+ window.alert("signup success")
      window.location.href="/signin"
     
     

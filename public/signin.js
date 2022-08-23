@@ -43,7 +43,7 @@ window.onload = function async (req,res) {
           console.log(id);
           if(response.status==200){
             localStorage.setItem("x-auth-token", token);
-           window.location.href="/menu"
+           window.location.href="/chicken.html"
            
            
         
@@ -59,3 +59,6 @@ window.onload = function async (req,res) {
         
         
        }
+        
+        
+       

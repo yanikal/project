@@ -20,6 +20,9 @@ const schemaDefinition = {
     type: String,
     require: [true, 'confirm password is required']
   }
+  
+
+  //{timestamp:true}
 }
 
 // create schema

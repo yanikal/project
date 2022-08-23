@@ -92,7 +92,7 @@ app.post ('/signup', urlencodedParser,  async (req, res)=>{
     const collection =db.collection("users")
     const doc={ fullname:fullname,email:email , password:password, confirmpassword:confirmpassword};
     const findUser= await collection.findOne({email:req.body.email})
-    console.log(findUser)
+    //console.log(findUser) null
         if(findUser){
          console.log("User already exists")
           return res.status(400).send({message:'User already exists'})

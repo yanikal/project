@@ -1,0 +1,47 @@
+p {
+    margin-bottom: 0;
+  }
+  
+  svg {
+    cursor: pointer;
+  }
+  
+  svg:active {
+    transform: scale(0.8);
+  }
+  
+  .container {
+    max-width: 450px;
+    border: 1px solid #0d6efd;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .todo-list-section {
+    margin-top: 2rem;
+    border-top: 1px solid gray;
+  }
+  
+  .list-group-item {
+    padding: 0;
+  }
+  
+  .strike {
+    text-decoration: line-through;
+  }
+  
+  .error-msg-container {
+    padding: 0.5em 0px;
+    height: 2ch;
+    max-height: 2ch;
+  }
+  
+  .text-error {
+    color: rgb(251, 63, 63);
+    font-size: 0.8em;
+  }
+  
+  .list-group {
+    display: flex;
+    flex-direction: column-reverse;
+  }
