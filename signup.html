@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body class="text-center">
+   
+      <main>
+        <p id="error"></p>
+       <p id="success"></p>
+       
+        <form id="form" method="POST" action="/signup" style="max-width:400px; margin:auto;">
+        <img src="./images/chicken.png"  alt="not found" width=100 height=60 class="responsive" >
+        <h1 class="h3 mb-3 fw-normal">signup</h1>
+        
+        <div class="form-floating">
+            
+          <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating">
+          <input type="fullname" class="form-control" id="fullname" placeholder="fullname">
+            <label for="floatingInput">Full Name</label>
+         </div>
+        
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="confirmpassword" placeholder="confirmPassword">
+            <label for="floatingPassword">confirmPassword</label>
+          </div>
+        
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">signup</button>
+        <p id="p2">Already Registered</p>
+    <div class="form-floating">
+        <a href="./signin.html">sign in </a></a>
+    
+        
+        <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+        </form>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="signup.js"></script>
+      </body>  
+
+
+</html>
